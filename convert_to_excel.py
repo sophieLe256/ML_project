@@ -5,8 +5,8 @@ num = [1, 2, 3]  # Assuming TrainData1.txt to TrainData6.txt
 
 for i in num:
     # Construct file names dynamically
-    txt_file = f"MissingData{i}.txt"  # Replace with your actual .txt file names
-    output_excel = f"output_MissingData{i}.xlsx"  # Corresponding Excel output file
+    txt_file = f"MissingData{i}.txt"  
+    output_excel = f"output_MissingData{i}.xlsx"  \
 
     try:
         # Read the text file with whitespace delimiter

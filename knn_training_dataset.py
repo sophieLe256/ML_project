@@ -61,9 +61,9 @@ all_accuracies = []
 
 for i in datasets:
     print(f"\nProcessing Dataset {i}...")
-    train_file = f'./ImputedData/Imputed_TrainData{i}.xlsx'
+    train_file = f'./ImputedData/TrainData{i}.xlsx'
     label_file = f'./Excel/output_TrainLabel{i}.xlsx'
-    test_file = f'./ImputedData/Imputed_TestData{i}.xlsx'
+    test_file = f'./ImputedData/TestData{i}.xlsx'
     output_file = f'./Output/Predictions_TestData{i}_KNN.txt'
     
     # Load the data
@@ -88,4 +88,22 @@ for i in datasets:
 print("\nAccuracy Summary for All Datasets:")
 for dataset_num, acc in all_accuracies:
     print(f"Dataset {dataset_num}: Training Accuracy = {acc:.2f}%")
+
+    import matplotlib.pyplot as plt
+
+# Extract dataset numbers and accuracies for plotting
+dataset_nums = [x[0] for x in all_accuracies]
+accuracies = [x[1] for x in all_accuracies]
+
+# Plotting the accuracy for each dataset
+plt.figure(figsize=(10, 6))
+plt.plot(dataset_nums, accuracies, marker='o', linestyle='-', color='b')
+plt.title('KNN Accuracy for All Datasets')
+plt.xlabel('Dataset Number')
+plt.ylabel('Accuracy (%)')
+plt.xticks(dataset_nums)  # Ensure all dataset numbers are labeled on the x-axis
+plt.grid(True)
+plt.savefig('./Output/KNN_Accuracy_Per_Dataset.png')
+plt.show()
+
 
