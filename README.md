@@ -72,13 +72,18 @@ python3 ./knn/dataset1_knn.py
 ```
 
 ### 6: View the Result
-1. Predicted test labels for each dataset will be saved in the Output/ folder:
+1. Predicted test labels for each dataset will be saved in the `Output/` folder:
 
-- Predictions_TestData1.txt
-* Predictions_TestData2.txt
-+ Predictions_TestData3.txt
-- Predictions_TestData4.txt
-* Predictions_TestData5.txt
+- LeClassification1_knn.txt
+- LeClassification1_rf.txt
+* LeClassification2_knn.txt
+* LeClassification2_rf.txt
++ LeClassification3_knn.txt
++ LeClassification3_rf.txt
+- LeClassification4_knn.txt
+- LeClassification4_rf.txt
+* LeClassification5_knn.txt
+* LeClassification5_rf.txt
   
 2. The console output will display:
 - Accuracy for KNN and RF models for each dataset.
