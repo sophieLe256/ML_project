@@ -19,7 +19,7 @@ def scale_data(train_data, test_data):
     return train_data_scaled, test_data_scaled
 
 def train_knn_classifier(train_data, train_labels, n_neighbors):
-    """Train a KNN classifier with k=5."""
+    """Train a KNN classifier with k=4."""
     knn_model = KNeighborsClassifier(n_neighbors=n_neighbors)
     knn_model.fit(train_data, train_labels.values.ravel())
     return knn_model
@@ -27,13 +27,14 @@ def train_knn_classifier(train_data, train_labels, n_neighbors):
 def predict_and_evaluate(model, train_data, train_labels, test_data):
     """Predict test data and evaluate the model on training data."""
     train_predictions = model.predict(train_data)
+    
     test_predictions = model.predict(test_data)
     
     accuracy = accuracy_score(train_labels, train_predictions)
-    print(f"Dataset 1 - Training Accuracy: {accuracy * 100:.2f}%")
-    print("Dataset 1 - Classification Report on Training Data:\n", 
+    print(f"Dataset 3 - Training Accuracy: {accuracy * 100:.2f}%")
+    print("Dataset 3 - Classification Report on Training Data:\n", 
           classification_report(train_labels, train_predictions))
-    print("Dataset 1 - Confusion Matrix on Training Data:\n", 
+    print("Dataset 3 - Confusion Matrix on Training Data:\n", 
           confusion_matrix(train_labels, train_predictions))
     
     return test_predictions, accuracy
@@ -44,11 +45,11 @@ def save_predictions(predictions, output_file):
     pd.DataFrame(predictions).to_csv(output_file, index=False, header=False)
     print(f"Predictions saved to {output_file}")
 
-print("\nProcessing Dataset 1...")
-train_file = './ImputedData/TrainData1.xlsx'
-label_file = './Excel/output_TrainLabel1.xlsx'
-test_file = './ImputedData/TestData1.xlsx'
-output_file = './Output/LeClassification1_knn.txt'
+print("\nProcessing Dataset 3...")
+train_file = './ImputedData/TrainData3.xlsx'
+label_file = './Excel/output_TrainLabel3.xlsx'
+test_file = './ImputedData/TestData3.xlsx'
+output_file = './Output/LeClassification3_knn.txt'
 
 train_data, train_labels, test_data = load_data(train_file, label_file, test_file)
 
@@ -60,5 +61,5 @@ test_predictions, accuracy = predict_and_evaluate(knn_model, train_data_scaled, 
 
 save_predictions(test_predictions, output_file)
 
-print(f"\nDataset 1: Training Accuracy = {accuracy * 100:.2f}%")
+print(f"\nDataset 3: Training Accuracy = {accuracy * 100:.2f}%")
 

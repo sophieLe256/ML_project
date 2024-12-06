@@ -1,18 +1,13 @@
 import pandas as pd
 
-# List of indices for the files
-num = [1, 2, 3]  # Assuming TrainData1.txt to TrainData6.txt
+num = [1, 2, 3] 
 
 for i in num:
-    # Construct file names dynamically
     txt_file = f"MissingData{i}.txt"  
     output_excel = f"output_MissingData{i}.xlsx"  \
 
     try:
-        # Read the text file with whitespace delimiter
         df = pd.read_csv(txt_file, delim_whitespace=True, header=None)
-
-        # Save DataFrame to Excel
         df.to_excel(output_excel, index=False, header=False)
 
         print(f"File successfully converted to {output_excel}")
