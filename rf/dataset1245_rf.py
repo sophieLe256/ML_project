@@ -67,7 +67,7 @@ def save_predictions(predictions, output_file):
     pd.DataFrame(predictions).to_csv(output_file, index=False, header=False)
     print(f"Predictions saved to {output_file}")
 
-# Main Workflow for Dataset 1 and Dataset 2
+# Main Workflow for Dataset 1,2,4,5
 datasets = [
     {"train_file": "./ImputedData/TrainData1.xlsx", "label_file": "./Excel/output_TrainLabel1.xlsx", "test_file": "./ImputedData/TestData1.xlsx", 
      "output_file": "./Output/LeClassification1_rf.txt", "dataset_num": 1},
@@ -87,19 +87,14 @@ for dataset in datasets:
     output_file = dataset["output_file"]
     dataset_num = dataset["dataset_num"]
 
-    # Load the data
     train_data, train_labels, test_data = load_data(train_file, label_file, test_file)
 
-    # Scale the data
     train_data_scaled, test_data_scaled = scale_data(train_data, test_data)
 
-    # Split training data for validation
     X_train, X_val, y_train, y_val = train_test_split(train_data_scaled, train_labels, test_size=0.2, random_state=42)
 
-    # Train the Random Forest model
     rf_model = train_rf_classifier(X_train, y_train)
 
-    # Perform cross-validation
     cross_validate_model(rf_model, train_data_scaled, train_labels)
 
     # Predict and evaluate on training and test data

@@ -6,26 +6,22 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.model_selection import GridSearchCV
 
-# Step 1: Load Data
 def load_data():
     train_data = pd.read_excel('./ImputedData/TrainData3.xlsx', header=None)
     train_labels = pd.read_excel('./Excel/output_TrainLabel3.xlsx', header=None)
     test_data = pd.read_excel('./ImputedData/TestData3.xlsx', header=None)
     return train_data, train_labels, test_data
 
-# Step 2: Handle Missing Values
 def handle_missing_values(data):
     imputer = KNNImputer(n_neighbors=5)
     return pd.DataFrame(imputer.fit_transform(data))
 
-# Step 3: Scale Data
 def scale_data(train_data, test_data):
     scaler = StandardScaler()
     train_data_scaled = scaler.fit_transform(train_data)
     test_data_scaled = scaler.transform(test_data)
     return train_data_scaled, test_data_scaled
 
-# Step 4: Optimize Random Forest
 def optimize_random_forest(train_data, train_labels):
     param_grid = {
         'n_estimators': [50, 100, 200],
@@ -38,7 +34,6 @@ def optimize_random_forest(train_data, train_labels):
     grid_search.fit(train_data, train_labels.values.ravel())
     return grid_search.best_params_
 
-# Step 5: Train and Evaluate Random Forest
 def train_and_evaluate_rf(train_data, train_labels, test_data, best_params):
     rf_model = RandomForestClassifier(random_state=42, **best_params)
     rf_model.fit(train_data, train_labels.values.ravel())
@@ -53,13 +48,11 @@ def train_and_evaluate_rf(train_data, train_labels, test_data, best_params):
     
     return test_predictions
 
-# Step 6: Save Predictions
 def save_predictions(predictions):
     os.makedirs('./Output', exist_ok=True)
     pd.DataFrame(predictions).to_csv('./Output/LeClassification3.txt', index=False, header=False)
     print("Predictions saved to './Output/LeClassification3_rf.txt'")
 
-# Main Workflow
 if __name__ == "__main__":
     train_data, train_labels, test_data = load_data()
     
