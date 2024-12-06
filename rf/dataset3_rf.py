@@ -56,8 +56,8 @@ def train_and_evaluate_rf(train_data, train_labels, test_data, best_params):
 # Step 6: Save Predictions
 def save_predictions(predictions):
     os.makedirs('./Output', exist_ok=True)
-    pd.DataFrame(predictions).to_csv('./Output/Predictions_TestData3_RF.txt', index=False, header=False)
-    print("Predictions saved to './Output/Predictions_TestData3_RF.txt'")
+    pd.DataFrame(predictions).to_csv('./Output/LeClassification3.txt', index=False, header=False)
+    print("Predictions saved to './Output/LeClassification3_rf.txt'")
 
 # Main Workflow
 if __name__ == "__main__":

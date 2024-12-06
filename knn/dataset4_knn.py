@@ -58,7 +58,7 @@ print("\nProcessing Dataset 4...")
 train_file = './ImputedData/TrainData4.xlsx'
 label_file = './Excel/output_TrainLabel4.xlsx'
 test_file = './ImputedData/TestData4.xlsx'
-output_file = './Output/Predictions_TestData4_KNN.txt'
+output_file = './Output/LeClassification4_knn.txt'
 
 # Load the data
 train_data, train_labels, test_data = load_data(train_file, label_file, test_file)
