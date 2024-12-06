@@ -9,8 +9,8 @@ Random Forest (RF)
 
 The objective is to compare the performance of both algorithms and select the best model for each dataset. The target accuracy thresholds are:
 
-- Dataset 1, 2, 4, 5: Achieve > 90% accuracy
-* Dataset 3: Achieve > 60% accuracy
+- Dataset 1, 2, 4: Achieve > 90% accuracy
+* Dataset 3, 6: Achieve > 60% accuracy
 ### Selected Models for Each Dataset
 - Dataset 1, 2, 4, 5: Best accuracy achieved with KNN.
 * Dataset 3: Best accuracy achieved with Random Forest (RF).
@@ -22,10 +22,6 @@ The following libraries are required to run this project:
 * NumPy: For numerical computations.
 + Scikit-learn: For implementing machine learning models (KNN and RF), scaling data, and evaluating performance.
 - OpenPyXL: For reading and writing Excel files.
-* Install these libraries using:
-```bash
-pip install pandas numpy scikit-learn openpyxl
-```
 
 ## :star2: How to Clone and Run the ML Project
 
@@ -83,9 +79,9 @@ python3 ./knn/dataset1_knn.py
 + Predictions_TestData3.txt
 - Predictions_TestData4.txt
 * Predictions_TestData5.txt
-- The console output will display:
-
-2. Accuracy for KNN and RF models for each dataset.
-- The selected best model for each dataset.
-* Training accuracy, precision, recall, and confusion matrix.
+  
+2. The console output will display:
+- Accuracy for KNN and RF models for each dataset.
+* The selected best model for each dataset.
++ Training accuracy, precision, recall, and confusion matrix.
 
